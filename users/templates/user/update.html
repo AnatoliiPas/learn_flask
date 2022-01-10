@@ -1,0 +1,56 @@
+{% extends 'layouts/base.html' %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/user.css') }}">
+{% endblock %}
+
+{% block content %}
+{% for message in get_flashed_messages() %}
+<div class="flashed" id="mes">
+    <div style="padding: 0 1em; line-height: 1.5em;">{{ message }}</div>
+    <div style="padding: 0 1em; height: 100%;"><button class="bt" onclick="hid()"
+            style="border: none; background: #d8d8ca; font-size: 1.4em;">X</button></div>
+</div>
+{% endfor %}
+{% if request.method.POST %}
+<center>
+    <h2>Обновить данные!</h2>
+</center>
+<br><br>
+<div style="width: 50%; margin: 0 auto; background: #c4c483ab;">
+    <img src="{{ url_for('static', filename='img/picture.jpg') }}" style="width: 100%;height: 100%; opacity: 0.6;">
+</div>
+{% else %}
+<center>
+    <h2 style="margin: 2em 0;">Обновить данные...</h2>
+</center>
+<form action="{{ url_for('user.update', id=name_to_update.id) }}" method="post">
+    {{ form.hidden_tag() }}
+    <div class="fl">
+        <div style="width: 30%;">{{ form.name.label(class="fm-lb") }}</div>
+        <div style="width: 70%;">{{ form.name(class="fm-inp", value=name_to_update.name) }}</div>
+    </div>
+    <div class="fl">
+        <div style="width: 30%;">{{ form.email.label(class="fm-lb") }}</div>
+        <div style="width: 70%;">{{ form.email(class="fm-inp", value=name_to_update.email) }}</div>
+    </div>
+    <div class="fl">
+        <div style="width: 30%;">{{ form.color.label(class="fm-lb") }}</div>
+        <div style="width: 70%;">{{ form.color(class="fm-inp", value=name_to_update.color) }}</div>
+    </div>
+    <div class="fl">
+        <div style="margin: 1em;">{{ form.submit(class="btn btn-pr") }}</div>
+        <div style="margin: 1em;">
+            <a class="btn btn-r" style="text-decoration: none; display: inline-block"
+                href="{{ url_for('user.delete', id=id) }}"> Удалить
+            </a>
+        </div>
+    </div>
+</form>
+{% endif %}
+{% endblock %}
+
+
+{% block codejs %}
+<script src="{{ url_for('static', filename='js/user.js') }}"></script>
+{% endblock %}

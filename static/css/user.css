@@ -1,0 +1,59 @@
+.fm-lb {
+    font-size: 1.2em;
+    line-height: 2em;
+}
+.fm-inp {
+    width: 70%;
+    height: 2em;
+    border: 1px solid #5a6291;
+    box-shadow: 0.3em 0.4em 0.4em #5a6291;
+    border-radius: 0.4em;
+    transition: border 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    outline:none;
+    padding-left: 1em;
+}
+.fm-inp:hover, .fm-inp:focus {
+    box-shadow: 0.2em 0.2em 0.4em #747a9c;
+}
+.fl {
+    display: flex;
+    margin: 2em 1em;
+}
+.btn {
+    border-radius: 0.4em;
+    padding: 0.2em 0.8em;
+    border: none;
+    font-size: 1.5em;
+    box-shadow: 0.2em 0.3em 0.3em #3a3a96;
+}
+
+.btn-pr {
+    background: #3a3a96;
+    color: whitesmoke;
+}
+
+.btn-r {
+    background: #963a3a;
+    color: whitesmoke;
+}
+
+.btn:hover {
+    background: #5555a3;
+    box-shadow: 0.17em 0.17em 0.27em #5555a3;
+}
+
+.btn:focus {
+    box-shadow: 0.1em 0.1em 0.2em #5555a3;
+}
+
+.flashed {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    margin: 2em auto;
+    background: #d8d8ca;
+}
+
+.bt {
+    cursor: pointer;
+}
