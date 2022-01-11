@@ -5,16 +5,15 @@
 {% endblock %}
 
 {% block content %}
-{% for message in get_flashed_messages() %}
-<div class="flashed" id="mes">
-    <div style="padding: 0 1em; line-height: 1.5em;">{{ message }}</div>
-    <div style="padding: 0 1em; height: 100%;"><button class="bt" onclick="hid()"
-            style="border: none; background: #d8d8ca; font-size: 1.4em;">X</button></div>
-</div>
-{% endfor %}
-{% if name %}
+
+{% if email %}
 <center>
-    <h2>Привет, {{ name }}!</h2>
+    <h2>Name: {{ user.name }}!</h2>
+    <h2>Email: {{ email }}!</h2>
+    <h2>Password: {{ password }}!</h2>
+    <h2>Hesh password: {{ user.password }}!</h2>
+    <h2>Passed: {{ passed }}!</h2>
+
 </center>
 <br><br>
 <div style="width: 50%; margin: 0 auto; background: #c4c483ab;">
@@ -24,8 +23,12 @@
 <form method="post">
     {{ form.hidden_tag() }}
     <div class="fl">
-        <div style="width: 30%;">{{ form.name.label(class="fm-lb") }}</div>
-        <div style="width: 70%;">{{ form.name(class="fm-inp") }}</div>
+        <div style="width: 30%;">{{ form.email.label(class="fm-lb") }}</div>
+        <div style="width: 70%;">{{ form.email(class="fm-inp") }}</div>
+    </div>
+    <div class="fl">
+        <div style="width: 30%;">{{ form.password.label(class="fm-lb") }}</div>
+        <div style="width: 70%;">{{ form.password(class="fm-inp") }}</div>
     </div>
     <div class="fl">
         {{ form.submit(class="btn btn-pr") }}

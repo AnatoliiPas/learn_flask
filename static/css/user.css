@@ -5,7 +5,7 @@
 .fm-inp {
     width: 70%;
     height: 2em;
-    border: 1px solid #5a6291;
+    border: 1px solid #bfc6ee;
     box-shadow: 0.3em 0.4em 0.4em #5a6291;
     border-radius: 0.4em;
     transition: border 0.15s ease-in-out, box-shadow 0.15s ease-in-out;

@@ -36,6 +36,14 @@
         <div style="width: 70%;">{{ form.color(class="fm-inp") }}</div>
     </div>
     <div class="fl">
+        <div style="width: 30%;">{{ form.password.label(class="fm-lb") }}</div>
+        <div style="width: 70%;">{{ form.password(class="fm-inp") }}</div>
+    </div>
+    <div class="fl">
+        <div style="width: 30%;">{{ form.password2.label(class="fm-lb") }}</div>
+        <div style="width: 70%;">{{ form.password2(class="fm-inp") }}</div>
+    </div>
+    <div class="fl">
         {{ form.submit(class="btn btn-pr") }}
     </div>
 </form>
@@ -43,7 +51,8 @@
 <div style="margin-top: 3em;">
     {% for user in our_users %}
     <p style="margin: 1em;">{{ user.id }}.<a href="{{ url_for('user.update', id=user.id) }}">{{user.name}}</a> - {{
-        user.email }} - {{ user.color }} - <a href="{{ url_for('user.delete', id=user.id) }}"> Удалить </a>
+        user.email }} - {{ user.color }} - {{ user.password }} -<a href="{{ url_for('user.delete', id=user.id) }}">
+            Удалить </a>
     </p>
     {% endfor %}
 </div>

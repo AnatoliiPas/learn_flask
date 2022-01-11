@@ -6,6 +6,7 @@ from db import db
 
 from config import Config
 from users.bluerprints import user
+from differents.bluerprints import different
 
 
 app = Flask(__name__)
@@ -16,6 +17,7 @@ maigrate = Migrate(app, db)
 
 
 app.register_blueprint(user, url_prefix='/user')
+app.register_blueprint(different, url_prefix='/different')
 
 
 @app.route('/')
