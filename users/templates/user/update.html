@@ -28,15 +28,15 @@
     {{ form.hidden_tag() }}
     <div class="fl">
         <div style="width: 30%;">{{ form.name.label(class="fm-lb") }}</div>
-        <div style="width: 70%;">{{ form.name(class="fm-inp", value=name_to_update.name) }}</div>
+        <div style="width: 70%;">{{ form.name(class="fm fm-inp", value=name_to_update.name) }}</div>
     </div>
     <div class="fl">
         <div style="width: 30%;">{{ form.email.label(class="fm-lb") }}</div>
-        <div style="width: 70%;">{{ form.email(class="fm-inp", value=name_to_update.email) }}</div>
+        <div style="width: 70%;">{{ form.email(class="fm fm-inp", value=name_to_update.email) }}</div>
     </div>
     <div class="fl">
         <div style="width: 30%;">{{ form.color.label(class="fm-lb") }}</div>
-        <div style="width: 70%;">{{ form.color(class="fm-inp", value=name_to_update.color) }}</div>
+        <div style="width: 70%;">{{ form.color(class="fm fm-inp", value=name_to_update.color) }}</div>
     </div>
     <div class="fl">
         <div style="margin: 1em;">{{ form.submit(class="btn btn-pr") }}</div>

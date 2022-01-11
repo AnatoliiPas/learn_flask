@@ -12,27 +12,31 @@
             style="border: none; background: #d8d8ca; font-size: 1.4em;">X</button></div>
 </div>
 {% endfor %}
-{% if name %}
-<center>
-    <h2>Привет, {{ name }}!</h2>
-</center>
-<br><br>
-<div style="width: 50%; margin: 0 auto; background: #c4c483ab;">
-    <img src="{{ url_for('static', filename='img/picture.jpg') }}" style="width: 100%;height: 100%; opacity: 0.6;">
-</div>
-{% else %}
+
 <form method="post">
     {{ form.hidden_tag() }}
     <div class="fl">
-        <div style="width: 30%;">{{ form.name.label(class="fm-lb") }}</div>
-        <div style="width: 70%;">{{ form.name(class="fm fm-inp") }}</div>
+        <div style="width: 30%;">{{ form.title.label(class="fm-lb") }}</div>
+        <div style="width: 70%;">{{ form.title(class="fm fm-inp") }}</div>
+    </div>
+    <div class="fl">
+        <div style="width: 30%;">{{ form.content.label(class="fm-lb") }}</div>
+        <div style="width: 70%;">{{ form.content(class="fm fm-tx", rows="10") }}</div>
+    </div>
+    <div class="fl">
+        <div style="width: 30%;">{{ form.autor.label(class="fm-lb") }}</div>
+        <div style="width: 70%;">{{ form.autor(class="fm fm-inp") }}</div>
+    </div>
+    <div class="fl">
+        <div style="width: 30%;">{{ form.slug.label(class="fm-lb") }}</div>
+        <div style="width: 70%;">{{ form.slug(class="fm fm-inp") }}</div>
     </div>
     <div class="fl">
         {{ form.submit(class="btn btn-pr") }}
     </div>
 </form>
-{% endif %}
 {% endblock %}
+
 
 {% block codejs %}
 <script src="{{ url_for('static', filename='js/user.js') }}"></script>

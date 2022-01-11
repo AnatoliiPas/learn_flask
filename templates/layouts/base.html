@@ -22,7 +22,11 @@
                 </nav>
             </div>
             <div id="center"></div>
-            <div id="right"></div>
+            <div id="right" style="display: flex; justify-content: end;">
+                <nav>
+                    <li><a href="{{ url_for('post.add_post') }}">Добавить статью</a></li>
+                </nav>
+            </div>
         </div>
     </header>
     <main>

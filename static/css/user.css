@@ -2,15 +2,21 @@
     font-size: 1.2em;
     line-height: 2em;
 }
-.fm-inp {
-    width: 70%;
-    height: 2em;
+.fm {
     border: 1px solid #bfc6ee;
     box-shadow: 0.3em 0.4em 0.4em #5a6291;
     border-radius: 0.4em;
     transition: border 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     outline:none;
     padding-left: 1em;
+}
+.fm-inp {
+    width: 70%;
+    height: 2em;
+}
+.fm-tx {
+    width: 70%;
+    padding-top: 0.5em;
 }
 .fm-inp:hover, .fm-inp:focus {
     box-shadow: 0.2em 0.2em 0.4em #747a9c;

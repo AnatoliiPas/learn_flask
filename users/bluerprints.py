@@ -54,11 +54,9 @@ def test_pw():
     if form.validate_on_submit():
         email = form.email.data
         password = form.password.data.encode('utf-8')
-        print(password)
         form.email.data = ''
         form.password.data = ''
         user = Users.query.filter_by(email=email).first()
-        print(type(user.password))
         passed = bcrypt.checkpw(password, user.password.encode('utf-8'))
     return render_template('user/test_pw.html', form=form, email=email, user=user, passed=passed, password=password)
 
