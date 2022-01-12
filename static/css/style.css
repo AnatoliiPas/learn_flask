@@ -37,5 +37,6 @@ nav li {
 }
 
 .wrapper {
-    margin: 5em;
+    width: 80%;
+    margin: 5em auto;
 }

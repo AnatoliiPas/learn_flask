@@ -63,3 +63,25 @@
 .bt {
     cursor: pointer;
 }
+
+.btn-a {
+    border: 0.1em solid #d7d7d7;
+    background: #dfdfdf;
+    padding: 0.6em;
+    color: #232333;
+}
+
+.btn-a:hover {
+    background: #cacaca;
+    color: white;
+    cursor: pointer;
+}
+
+.btn-a-red {
+    background: #fdb5b5;
+}
+
+.btn-a-red:hover {
+    background: #bb7a7a;
+    color: white;
+}

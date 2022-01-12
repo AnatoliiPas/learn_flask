@@ -18,7 +18,7 @@ maigrate = Migrate(app, db)
 
 
 app.register_blueprint(user, url_prefix='/user')
-app.register_blueprint(post, url_prefix='/post')
+app.register_blueprint(post, url_prefix='/posts')
 app.register_blueprint(different, url_prefix='/different')
 
 
