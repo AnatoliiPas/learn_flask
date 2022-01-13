@@ -13,6 +13,8 @@
 </div>
 {% endfor %}
 
+{% if post.poster.id == current_user.id %}
+
 <form method="post">
     {{ form.hidden_tag() }}
     <div class="fl">
@@ -24,10 +26,6 @@
         <div style="width: 70%;">{{ form.content(class="fm fm-tx", rows="10") }}</div>
     </div>
     <div class="fl">
-        <div style="width: 30%;">{{ form.autor.label(class="fm-lb") }}</div>
-        <div style="width: 70%;">{{ form.autor(class="fm fm-inp") }}</div>
-    </div>
-    <div class="fl">
         <div style="width: 30%;">{{ form.slug.label(class="fm-lb") }}</div>
         <div style="width: 70%;">{{ form.slug(class="fm fm-inp") }}</div>
     </div>
@@ -35,6 +33,16 @@
         {{ form.submit(class="btn btn-pr") }}
     </div>
 </form>
+
+{% else %}
+<div class="flashed" id="mes">
+    <div style="padding: 0 1em; line-height: 1.5em;">
+        <h3>Вы не можете редактировать эту страницу!</h3>
+    </div>
+    <div style="padding: 0 1em; height: 100%;"><button class="bt" onclick="hid()"
+            style="border: none; background: #d8d8ca; font-size: 1.4em;">X</button></div>
+</div>
+{% endif %}
 {% endblock %}
 
 

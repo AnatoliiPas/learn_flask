@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, flash, request
-from flask_login import LoginManager, login_user, login_required, logout_user, current_user
+from flask_login import LoginManager, login_user, login_required, logout_user
 from flask.helpers import url_for
 from werkzeug.utils import redirect
 import bcrypt
@@ -114,6 +114,7 @@ def test_pw():
 
 
 @user.route('/update/<int:id>', methods=['GET', 'POST'])
+@login_required
 def update(id):
     form = UserForm()
     name_to_update = Users.query.get_or_404(id)

@@ -48,28 +48,30 @@
 
         <div style="display: flex; flex-direction: column; width: 80%; margin: 1em auto;">
             <div style="display: flex; flex-direction: column; box-shadow: 7px 5px 9px #d7d7d7, -4px 1px 9px #d7d7d7;">
-                <div style="height: 25%;">
+                <div>
                     <p style="line-height: 2em; margin-left: 1em;" href="#">{{ post.title }}</p>
                 </div>
-                <div style="height: 60%; width: 100%; padding: 0 1em;">
-                    <p style="margin: 0.9em;">{{ post.content }}</p>
-                    <p style="margin: 0.9em;">{{ post.autor }}</p>
+                <div style="width: 100%; padding: 0 1em;">
+                    <p style="margin: 0.9em; white-space: pre-wrap;">{{ post.content }}</p>
+                    <p style="margin: 0.9em;">{{ post.poster }}</p>
                     <p style="margin: 0.9em;">{{ post.date_posted }}</p>
                 </div>
             </div>
             <div style="display: flex;">
-                <div style="height: 15%; padding: 1em; margin: 0 1em;">
+                <div style="padding: 1em; margin: 0 1em;">
                     <button class="btn-a" style=" font-size: 0.9em;"
                         onclick="document.location=`{{ url_for('post.index') }}`">Назад</button>
                 </div>
-                <div style="height: 15%; padding: 1em; margin: 0 1em;">
+                {% if current_user.id == post.poster.id %}
+                <div style="padding: 1em; margin: 0 1em;">
                     <button class="btn-a" style=" font-size: 0.9em;"
                         onclick="document.location=`{{ url_for('post.edit_post', id=post.id) }}`">Изменить</button>
                 </div>
-                <div style="height: 15%; padding: 1em; margin: 0 1em;">
+                <div style="padding: 1em; margin: 0 1em;">
                     <button class="btn-a btn-a-red"
                         onclick="document.location=`{{ url_for('post.delete_post', id=post.id) }}`">Удалить</button>
                 </div>
+                {% endif %}
             </div>
         </div>
         {% endif %}

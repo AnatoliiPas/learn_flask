@@ -28,6 +28,7 @@
                     {% if current_user.is_authenticated %}
                     <li><a href="{{ url_for('user.dashboard') }}">Личный кабинет</a></li>
                     <li><a href="{{ url_for('user.logout') }}">Выйти</a></li>
+                    <li style="line-height: 3em; color: white;">{{ current_user.username }}</li>
                     {% else %}
                     <li><a href="{{ url_for('user.register') }}">Зарегистрироваться</a></li>
                     <li><a href="{{ url_for('user.login') }}">Войти</a></li>

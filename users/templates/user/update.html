@@ -12,18 +12,14 @@
             style="border: none; background: #d8d8ca; font-size: 1.4em;">X</button></div>
 </div>
 {% endfor %}
-{% if request.method.POST %}
-<center>
-    <h2>Обновить данные!</h2>
-</center>
-<br><br>
-<div style="width: 50%; margin: 0 auto; background: #c4c483ab;">
-    <img src="{{ url_for('static', filename='img/picture.jpg') }}" style="width: 100%;height: 100%; opacity: 0.6;">
-</div>
-{% else %}
+
+{% if id == current_user.id %}
+
 <center>
     <h2 style="margin: 2em 0;">Обновить данные...</h2>
 </center>
+<br><br>
+
 <form action="{{ url_for('user.update', id=name_to_update.id) }}" method="post">
     {{ form.hidden_tag() }}
     <div class="fl">
@@ -51,7 +47,17 @@
         </div>
     </div>
 </form>
+
+{% else %}
+<div class="flashed" id="mes">
+    <div style="padding: 0 1em; line-height: 1.5em;">
+        <h3>Вы не можете редактировать эту страницу!</h3>
+    </div>
+    <div style="padding: 0 1em; height: 100%;"><button class="bt" onclick="hid()"
+            style="border: none; background: #d8d8ca; font-size: 1.4em;">X</button></div>
+</div>
 {% endif %}
+
 {% endblock %}
 
 
