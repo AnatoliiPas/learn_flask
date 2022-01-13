@@ -1,11 +1,10 @@
-from os import name
 from flask import Flask, render_template
 from flask_migrate import Migrate
 
 from db import db
 
 from config import Config
-from users.bluerprints import user
+from users.bluerprints import user, login_manager
 from differents.bluerprints import different
 from posts.bluerprints import post
 
@@ -15,6 +14,8 @@ app.config.from_object(Config)
 
 db.init_app(app)
 maigrate = Migrate(app, db)
+
+login_manager.init_app(app)
 
 
 app.register_blueprint(user, url_prefix='/user')

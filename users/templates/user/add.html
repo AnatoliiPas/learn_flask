@@ -28,6 +28,10 @@
         <div style="width: 70%;">{{ form.name(class="fm fm-inp") }}</div>
     </div>
     <div class="fl">
+        <div style="width: 30%;">{{ form.username.label(class="fm-lb") }}</div>
+        <div style="width: 70%;">{{ form.username(class="fm fm-inp") }}</div>
+    </div>
+    <div class="fl">
         <div style="width: 30%;">{{ form.email.label(class="fm-lb") }}</div>
         <div style="width: 70%;">{{ form.email(class="fm fm-inp") }}</div>
     </div>
@@ -51,8 +55,8 @@
 <div style="margin-top: 3em;">
     {% for user in our_users %}
     <p style="margin: 1em;">{{ user.id }}.<a href="{{ url_for('user.update', id=user.id) }}">{{user.name}}</a> - {{
-        user.email }} - {{ user.color }} - {{ user.password }} -<a href="{{ url_for('user.delete', id=user.id) }}">
-            Удалить </a>
+        user.username }} - {{ user.email }} - {{ user.color }} - {{ user.password }} -<a
+            href="{{ url_for('user.delete', id=user.id) }}"> Удалить </a>
     </p>
     {% endfor %}
 </div>

@@ -18,14 +18,20 @@
                 <nav>
                     <li><a href="{{ url_for('index') }}">Домашняя</a></li>
                     <li><a href="{{ url_for('user.users') }}">Имя</a></li>
-                    <li><a href="{{ url_for('user.register') }}">Зарегистрироваться</a></li>
+                    <li><a href="{{ url_for('post.index') }}">Статьи</a></li>
+                    <li><a href="{{ url_for('post.add_post') }}">Добавить статью</a></li>
                 </nav>
             </div>
             <div id="center"></div>
             <div id="right" style="display: flex; justify-content: end;">
                 <nav>
-                    <li><a href="{{ url_for('post.index') }}">Статьи</a></li>
-                    <li><a href="{{ url_for('post.add_post') }}">Добавить статью</a></li>
+                    {% if current_user.is_authenticated %}
+                    <li><a href="{{ url_for('user.dashboard') }}">Личный кабинет</a></li>
+                    <li><a href="{{ url_for('user.logout') }}">Выйти</a></li>
+                    {% else %}
+                    <li><a href="{{ url_for('user.register') }}">Зарегистрироваться</a></li>
+                    <li><a href="{{ url_for('user.login') }}">Войти</a></li>
+                    {% endif %}
                 </nav>
             </div>
         </div>

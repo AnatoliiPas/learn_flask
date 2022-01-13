@@ -1,0 +1,69 @@
+{% extends 'layouts/base.html' %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/user.css') }}">
+{% endblock %}
+
+{% block content %}
+{% for message in get_flashed_messages() %}
+<div class="flashed" id="mes">
+    <div style="padding: 0 1em; line-height: 1.5em;">{{ message }}</div>
+    <div style="padding: 0 1em; height: 100%;"><button class="bt" onclick="hid()"
+            style="border: none; background: #d8d8ca; font-size: 1.4em;">X</button></div>
+</div>
+{% endfor %}
+
+<div class="wrapper">
+    <center>
+        <h2>Личный кабинет!</h2>
+        <br><br>
+    </center>
+    <div style="border: 1px solid #dfdfdf; box-shadow: 3px 8px 5px #dfdfdf;">
+        <div style="display: flex;background: white;height: 4em;">
+            <div style="width: 20%; line-height: 4em;padding-left: 1em;">
+                <p><strong>Имя: </strong></p>
+            </div>
+            <div style="width: 80%; line-height: 4em;padding-left: 1em;">
+                <p>{{ current_user.name }}</p>
+            </div>
+        </div>
+        <div style="display: flex;background: #dfdfdf;height: 4em;">
+            <div style="width: 20%;line-height: 4em;padding-left: 1em;">
+                <p><strong>Никнейм: </strong></p>
+            </div>
+            <div style="width: 80%; line-height: 4em;padding-left: 1em;">
+                <p>{{ current_user.username }}</p>
+            </div>
+        </div>
+        <div style="display: flex;background: white;height: 4em;">
+            <div style="width: 20%; line-height: 4em;padding-left: 1em;">
+                <p><strong>Email: </strong></p>
+            </div>
+            <div style="width: 80%; line-height: 4em;padding-left: 1em;">
+                <p>{{ current_user.email }}</p>
+            </div>
+        </div>
+        <div style="display: flex;background: #dfdfdf;height: 4em;">
+            <div style="width: 20%;line-height: 4em;padding-left: 1em;">
+                <p><strong>Любимый цвет: </strong></p>
+            </div>
+            <div style="width: 80%; line-height: 4em;padding-left: 1em;">
+                <p>{{ current_user.color }}</p>
+            </div>
+        </div>
+        <div style="display: flex;background: white;height: 4em;">
+            <div style="width: 20%; line-height: 4em;padding-left: 1em;">
+                <p><strong>Профиль создан: </strong></p>
+            </div>
+            <div style="width: 80%; line-height: 4em;padding-left: 1em;">
+                <p>{{ current_user.created_add }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block codejs %}
+<script src="{{ url_for('static', filename='js/user.js') }}"></script>
+{% endblock %}
