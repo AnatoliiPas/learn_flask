@@ -6,7 +6,7 @@ from wtforms.validators import DataRequired, EqualTo, Length
 class UserForm(FlaskForm):
     name = StringField('Имя', validators=[DataRequired()])
     username = StringField('Никнейм', validators=[DataRequired()])
-    email = StringField('Email', validators=[DataRequired()])
+    email = EmailField('Email', validators=[DataRequired()])
     color = StringField('Любимый цвет')
     password = PasswordField('Пароль', validators=[
                              DataRequired(), EqualTo('password2', message='пароли должны совпадать'), Length(min=8)])

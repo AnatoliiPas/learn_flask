@@ -60,6 +60,49 @@
             </div>
         </div>
     </div>
+
+    <div style="display: flex;">
+        <div style="margin: 2em 1em;">
+            <button class="btn-a"
+                onclick="document.location=`{{ url_for('user.update', id=current_user.id) }}`">Изменить
+                профиль</button>
+        </div>
+        <div style="margin: 2em 1em;">
+            <button class="btn-a btn-a-red"
+                onclick="document.location=`{{ url_for('user.delete', id=current_user.id) }}`">Удалить
+                профиль</button>
+        </div>
+    </div>
+
+    <div style="margin-top: 4em;">
+        <form action="{{ url_for('user.update', id=current_user.id) }}" method="post">
+            {{ form.hidden_tag() }}
+            <div class="fl">
+                <div style="width: 30%;">{{ form.name.label(class="fm-lb") }}</div>
+                <div style="width: 70%;">{{ form.name(class="fm fm-inp", value=current_user.name) }}</div>
+            </div>
+            <div class="fl">
+                <div style="width: 30%;">{{ form.username.label(class="fm-lb") }}</div>
+                <div style="width: 70%;">{{ form.username(class="fm fm-inp", value=current_user.username) }}</div>
+            </div>
+            <div class="fl">
+                <div style="width: 30%;">{{ form.email.label(class="fm-lb") }}</div>
+                <div style="width: 70%;">{{ form.email(class="fm fm-inp", value=current_user.email) }}</div>
+            </div>
+            <div class="fl">
+                <div style="width: 30%;">{{ form.color.label(class="fm-lb") }}</div>
+                <div style="width: 70%;">{{ form.color(class="fm fm-inp", value=current_user.color) }}</div>
+            </div>
+            <div class="fl">
+                <div style="margin: 1em;">{{ form.submit(class="btn btn-pr", value='Изменить') }}</div>
+                <div style="margin: 1em;">
+                    <a class="btn btn-r" style="text-decoration: none; display: inline-block"
+                        href="{{ url_for('user.delete', id=current_user.id) }}"> Удалить
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
 {% endblock %}
 

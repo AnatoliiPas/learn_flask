@@ -12,6 +12,7 @@ user = Blueprint('user', __name__, template_folder='templates')
 
 login_manager = LoginManager()
 login_manager.login_view = 'user.login'
+login_manager.login_message = 'Авторизуйтесь для доступа к закрытым страницам'
 
 
 @login_manager.user_loader
@@ -83,7 +84,8 @@ def login():
 @user.route('/dashboard', methods=['GET', 'POST'])
 @login_required
 def dashboard():
-    return render_template('user/dashboard.html')
+    form = UserForm()
+    return render_template('user/dashboard.html', form=form)
 
 
 @user.route('/logout', methods=['GET', 'POST'])
@@ -123,7 +125,7 @@ def update(id):
         try:
             db.session.commit()
             flash('Данные обновленны')
-            return redirect(url_for('user.add_user'))
+            return redirect(url_for('user.dashboard'))
         except:
             flash('Ошибка! Попробуй еще раз...')
             return render_template('user/update.html', form=form, name_to_update=name_to_update)

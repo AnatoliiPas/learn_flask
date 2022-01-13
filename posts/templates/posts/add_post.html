@@ -13,8 +13,9 @@
 </div>
 {% endfor %}
 
+{% if current_user.is_authenticated %}
 <form method="post">
-    {{ form.hidden_tag() }}
+    {{ form.csrf_token }}
     <div class="fl">
         <div style="width: 30%;">{{ form.title.label(class="fm-lb") }}</div>
         <div style="width: 70%;">{{ form.title(class="fm fm-inp") }}</div>
@@ -35,6 +36,10 @@
         {{ form.submit(class="btn btn-pr") }}
     </div>
 </form>
+{% else %}
+<h3>Что бы иметь возможность создавать статьи вы должны быть зарегестрированным пользователем.</h3>
+{% endif %}
+
 {% endblock %}
 
 

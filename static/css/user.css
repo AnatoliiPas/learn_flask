@@ -41,11 +41,17 @@
 .btn-r {
     background: #963a3a;
     color: whitesmoke;
+    box-shadow: 0.2em 0.3em 0.3em #963a3a;
 }
 
 .btn:hover {
     background: #5555a3;
     box-shadow: 0.17em 0.17em 0.27em #5555a3;
+}
+
+.btn-r:hover {
+    background: #7c2f2f;
+    box-shadow: 0.17em 0.17em 0.27em #963a3a;
 }
 
 .btn:focus {

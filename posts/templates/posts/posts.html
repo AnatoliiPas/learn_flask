@@ -34,10 +34,6 @@
                     <button class="btn-a" style=" font-size: 0.9em;"
                         onclick="document.location=`{{ url_for('post.posts', id=post.id) }}`">Перейти...</button>
                 </div>
-                <div style="height: 15%; padding: 1em; margin: 0 1em;">
-                    <button class="btn-a" style=" font-size: 0.9em;"
-                        onclick="document.location=`{{ url_for('post.edit_post', id=post.id) }}`">Изменить</button>
-                </div>
             </div>
         </div>
         {% endfor %}

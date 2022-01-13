@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, flash, request, redirect
 from flask.helpers import url_for
+from flask_login import login_required
 
 from db import db
 from .models import Posts
@@ -40,6 +41,7 @@ def add_post():
 
 
 @post.route('/edit/<int:id>', methods=['GET', 'POST'])
+@login_required
 def edit_post(id):
     form = PostForm()
     post = Posts.query.get_or_404(id)
@@ -61,6 +63,7 @@ def edit_post(id):
 
 
 @post.route('/delete/<int:id>')
+@login_required
 def delete_post(id):
     to_delete = Posts.query.get_or_404(id)
 
