@@ -16,7 +16,7 @@
 {% if post.poster.id == current_user.id %}
 
 <form method="post">
-    {{ form.hidden_tag() }}
+    {{ form.csrf_token }}
     <div class="fl">
         <div style="width: 30%;">{{ form.title.label(class="fm-lb") }}</div>
         <div style="width: 70%;">{{ form.title(class="fm fm-inp") }}</div>

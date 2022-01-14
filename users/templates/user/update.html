@@ -21,7 +21,7 @@
 <br><br>
 
 <form action="{{ url_for('user.update', id=name_to_update.id) }}" method="post">
-    {{ form.hidden_tag() }}
+    {{ form.csrf_token }}
     <div class="fl">
         <div style="width: 30%;">{{ form.name.label(class="fm-lb") }}</div>
         <div style="width: 70%;">{{ form.name(class="fm fm-inp", value=name_to_update.name) }}</div>

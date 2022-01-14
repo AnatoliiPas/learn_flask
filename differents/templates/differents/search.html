@@ -1,0 +1,18 @@
+{% extends 'layouts/base.html' %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/user.css') }}">
+{% endblock %}
+
+{% block content %}
+<div style="width: 70%; margin: 2em auto;">
+    <p style="margin: 1em;">Поиск....</p>
+    <p>{{ searched }}</p>
+    {% for post in posts %}
+    <div>
+        <p>{{ post.title }}</p>
+        <button class="btn-a" onclick="document.location=`{{ url_for('post.posts', id=post.id) }}`">Перейти</button>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

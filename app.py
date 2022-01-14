@@ -4,6 +4,7 @@ from flask_migrate import Migrate
 from db import db
 
 from config import Config
+from differents.form import SearchForm
 from users.bluerprints import user, login_manager
 from differents.bluerprints import different
 from posts.bluerprints import post
@@ -21,6 +22,12 @@ login_manager.init_app(app)
 app.register_blueprint(user, url_prefix='/user')
 app.register_blueprint(post, url_prefix='/posts')
 app.register_blueprint(different, url_prefix='/different')
+
+
+@app.context_processor
+def base():
+    form = SearchForm()
+    return dict(form=form)
 
 
 @app.route('/')

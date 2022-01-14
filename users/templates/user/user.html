@@ -22,7 +22,7 @@
 </div>
 {% else %}
 <form method="post">
-    {{ form.hidden_tag() }}
+    {{ form.csrf_token }}
     <div class="fl">
         <div style="width: 30%;">{{ form.name.label(class="fm-lb") }}</div>
         <div style="width: 70%;">{{ form.name(class="fm fm-inp") }}</div>
