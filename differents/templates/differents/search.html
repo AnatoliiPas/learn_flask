@@ -5,14 +5,32 @@
 {% endblock %}
 
 {% block content %}
-<div style="width: 70%; margin: 2em auto;">
-    <p style="margin: 1em;">Поиск....</p>
-    <p>{{ searched }}</p>
-    {% for post in posts %}
-    <div>
-        <p>{{ post.title }}</p>
-        <button class="btn-a" onclick="document.location=`{{ url_for('post.posts', id=post.id) }}`">Перейти</button>
+
+<div style="display: flex; flex-wrap: wrap;">
+    {% if posts %}
+    {% for post in posts%}
+    <div
+        style="width: 45%; height: 13em; margin: 1.5em 1.9em; display: flex; flex-direction: column; box-shadow: 7px 5px 9px #d7d7d7, -4px 1px 9px #d7d7d7;">
+        <div class="title-a" style="height: 25%;">
+            <a style="text-decoration: none; line-height: 2em; margin-left: 1em;"
+                href="{{ url_for('post.posts', id=post.id) }}">{{ post.title }}</a>
+        </div>
+        <div style="height: 60%; width: 100%; padding: 0 1em;">
+            <p style="margin: 0.9em;">{{ post.content[:60] | safe }}...</p>
+            <p style="margin: 0.9em;">{{ post.autor }}</p>
+            <p style="margin: 0.9em;">{{ post.date_posted }}</p>
+        </div>
+        <div style="display: flex;">
+            <div style="height: 15%; padding: 1em; margin: 0 1em;">
+                <button class="btn-a" style=" font-size: 0.9em;"
+                    onclick="document.location=`{{ url_for('post.posts', id=post.id) }}`">Перейти...</button>
+            </div>
+        </div>
     </div>
     {% endfor %}
+    {% else %}
+    <p>Ничего не найденно.</p>
+    {% endif %}
 </div>
+
 {% endblock %}

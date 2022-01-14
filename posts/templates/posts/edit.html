@@ -1,8 +1,5 @@
 {% extends 'layouts/base.html' %}
 
-{% block style %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/user.css') }}">
-{% endblock %}
 
 {% block content %}
 {% for message in get_flashed_messages() %}
@@ -45,9 +42,4 @@
             style="border: none; background: #d8d8ca; font-size: 1.4em;">X</button></div>
 </div>
 {% endif %}
-{% endblock %}
-
-
-{% block codejs %}
-<script src="{{ url_for('static', filename='js/user.js') }}"></script>
 {% endblock %}

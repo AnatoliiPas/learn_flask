@@ -92,3 +92,23 @@
     background: #bb7a7a;
     color: white;
 }
+
+.title-a {
+    color: black;
+    background: white;
+}
+
+.title-a a {
+    color: black;
+    background: white;
+}
+
+.title-a:hover {
+    color: white;
+    background: #232333;
+}
+
+.title-a:hover a {
+    color: white;
+    background: #232333;
+}

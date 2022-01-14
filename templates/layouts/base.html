@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }} ">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/user.css') }}">
     {% block style %}{% endblock %}
     <title>Flask tutorial</title>
 </head>
@@ -26,6 +27,9 @@
             <div id="right" style="display: flex; justify-content: end;">
                 <nav>
                     {% if current_user.is_authenticated %}
+                    {% if current_user.id == 31 %}
+                    <li><a href="{{ url_for('admin.index') }}">Админ</a></li>
+                    {% endif %}
                     <li><a href="{{ url_for('user.dashboard') }}">Личный кабинет</a></li>
                     <li><a href="{{ url_for('user.logout') }}">Выйти</a></li>
                     <li style="line-height: 3em; color: white;">{{ current_user.username }}</li>
@@ -52,6 +56,7 @@
     </main>
     <footer></footer>
     {% block codejs %}{% endblock %}
+    <script src="{{ url_for('static', filename='js/user.js') }}"></script>
 </body>
 
 </html>

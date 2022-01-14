@@ -1,6 +1,15 @@
 {% extends 'layouts/base.html' %}
 
 {% block content %}
+
+{% for message in get_flashed_messages() %}
+<div class="flashed" id="mes">
+    <div style="padding: 0 1em; line-height: 1.5em;">{{ message }}</div>
+    <div style="padding: 0 1em; height: 100%;"><button class="bt" onclick="hid()"
+            style="border: none; background: #d8d8ca; font-size: 1.4em;">X</button></div>
+</div>
+{% endfor %}
+
 <div style="width: 70%; margin: 2em auto;">
     <p style="margin: 1em;">
         1.<a style="text-decoration: none; font-size: 1.3em;" href="{{ url_for('differents.date_json') }}">Json</a>

@@ -1,8 +1,5 @@
 {% extends 'layouts/base.html' %}
 
-{% block style %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/user.css') }}">
-{% endblock %}
 
 {% block content %}
 
@@ -39,9 +36,4 @@
 <h3>Что бы иметь возможность создавать статьи вы должны быть зарегестрированным пользователем.</h3>
 {% endif %}
 
-{% endblock %}
-
-
-{% block codejs %}
-<script src="{{ url_for('static', filename='js/user.js') }}"></script>
 {% endblock %}

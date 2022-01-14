@@ -5,9 +5,11 @@ from conf import db, login_manager, ckeditor
 
 from config import Config
 from differents.form import SearchForm
+
 from users.bluerprints import user
 from differents.bluerprints import different
 from posts.bluerprints import post
+from admin.blueprints import admin
 
 
 app = Flask(__name__)
@@ -22,6 +24,7 @@ ckeditor.init_app(app)
 app.register_blueprint(user, url_prefix='/user')
 app.register_blueprint(post, url_prefix='/posts')
 app.register_blueprint(different, url_prefix='/different')
+app.register_blueprint(admin, url_prefix='/admin-site')
 
 
 @app.context_processor
