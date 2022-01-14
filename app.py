@@ -1,11 +1,11 @@
 from flask import Flask, render_template
 from flask_migrate import Migrate
 
-from db import db
+from conf import db, login_manager, ckeditor
 
 from config import Config
 from differents.form import SearchForm
-from users.bluerprints import user, login_manager
+from users.bluerprints import user
 from differents.bluerprints import different
 from posts.bluerprints import post
 
@@ -13,11 +13,11 @@ from posts.bluerprints import post
 app = Flask(__name__)
 app.config.from_object(Config)
 
+
 db.init_app(app)
-maigrate = Migrate(app, db)
-
+migrate = Migrate(app, db)
 login_manager.init_app(app)
-
+ckeditor.init_app(app)
 
 app.register_blueprint(user, url_prefix='/user')
 app.register_blueprint(post, url_prefix='/posts')

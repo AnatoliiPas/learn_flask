@@ -1,4 +1,3 @@
-from crypt import methods
 from datetime import date
 from flask import Blueprint, render_template
 

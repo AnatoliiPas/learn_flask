@@ -1,16 +1,15 @@
 from flask import Blueprint, render_template, flash, request
-from flask_login import LoginManager, login_user, login_required, logout_user
+from flask_login import login_user, login_required, logout_user
 from flask.helpers import url_for
 from werkzeug.utils import redirect
 import bcrypt
 
-from db import db
+from conf import db, login_manager
 from .models import Users
 from .form import LogindForm, UserForm, NameForm, PasswordForm
 
 user = Blueprint('user', __name__, template_folder='templates')
 
-login_manager = LoginManager()
 login_manager.login_view = 'user.login'
 login_manager.login_message = 'Авторизуйтесь для доступа к закрытым страницам'
 
