@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block content %}
+
 {% for message in get_flashed_messages() %}
 <div class="flashed" id="mes">
     <div style="padding: 0 1em; line-height: 1.5em;">{{ message }}</div>
@@ -32,6 +33,8 @@
         {{ form.submit(class="btn btn-pr") }}
     </div>
 </form>
+{{ ckeditor.load() }}
+{{ ckeditor.config(name='content') }}
 {% else %}
 <h3>Что бы иметь возможность создавать статьи вы должны быть зарегестрированным пользователем.</h3>
 {% endif %}

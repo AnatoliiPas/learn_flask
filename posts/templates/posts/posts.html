@@ -25,7 +25,7 @@
                     href="{{ url_for('post.posts', id=post.id) }}">{{ post.title }}</a>
             </div>
             <div style="height: 60%; width: 100%; padding: 0 1em;">
-                <p style="margin: 0.9em;">{{ post.content[:60] }}...</p>
+                <p style="margin: 0.9em;">{{ post.content[:60] | safe }}...</p>
                 <p style="margin: 0.9em;">{{ post.autor }}</p>
                 <p style="margin: 0.9em;">{{ post.date_posted }}</p>
             </div>
@@ -38,13 +38,6 @@
         </div>
         {% endfor %}
         {% else %}
-        {% for message in get_flashed_messages() %}
-        <div class="flashed" id="mes">
-            <div style="padding: 0 1em; line-height: 1.5em;">{{ message }}</div>
-            <div style="padding: 0 1em; height: 100%;"><button class="bt" onclick="hid()"
-                    style="border: none; background: #d8d8ca; font-size: 1.4em;">X</button></div>
-        </div>
-        {% endfor %}
 
         <div style="display: flex; flex-direction: column; width: 80%; margin: 1em auto;">
             <div style="display: flex; flex-direction: column; box-shadow: 7px 5px 9px #d7d7d7, -4px 1px 9px #d7d7d7;">
@@ -52,7 +45,7 @@
                     <p style="line-height: 2em; margin-left: 1em;" href="#">{{ post.title }}</p>
                 </div>
                 <div style="width: 100%; padding: 0 1em;">
-                    <p style="margin: 0.9em; white-space: pre-wrap;">{{ post.content }}</p>
+                    <p style="margin: 0.9em; white-space: pre-wrap;">{{ post.content | safe }}</p>
                     <p style="margin: 0.9em;">{{ post.poster }}</p>
                     <p style="margin: 0.9em;">{{ post.date_posted }}</p>
                 </div>
