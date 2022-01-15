@@ -9,7 +9,7 @@ admin = Blueprint('admin', __name__, template_folder='templates')
 @login_required
 def index():
     id = current_user.id
-    if id == 31:
+    if id == 34:
         return render_template('admin/admin.html')
     else:
         flash('Вы должны быть администратором.')

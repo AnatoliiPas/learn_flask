@@ -41,10 +41,11 @@ def register():
                     password = form.password.data.encode('utf-8')
                     hash = bcrypt.hashpw(password, bcrypt.gensalt())
                     user = Users(name=form.name.data, username=form.username.data,
-                                 email=form.email.data, color=form.color.data, password=hash.decode('utf8'))
+                                 about_author=form.about_author.data, email=form.email.data, password=hash.decode('utf8'))
                     db.session.add(user)
                     db.session.commit()
                     flash('Пользователь добавлен')
+                    return redirect(url_for('user.login'))
                 else:
                     flash('Регистрация не удалась!Такой email уже заренистрирован!')
                     return render_template('user/add.html', form=form)
@@ -58,7 +59,6 @@ def register():
         form.name.data = ''
         form.username.data = ''
         form.email.data = ''
-        form.color.data = ''
         form.password.data = ''
     our_users = Users.query.order_by(Users.created_add)
     return render_template('user/add.html', name=name, form=form, our_users=our_users)
@@ -121,7 +121,7 @@ def update(id):
         name_to_update.name = request.form['name']
         name_to_update.username = request.form['username']
         name_to_update.email = request.form['email']
-        name_to_update.color = request.form['color']
+        name_to_update.about_author = request.form['about_author']
         try:
             db.session.commit()
             flash('Данные обновленны')
@@ -129,6 +129,7 @@ def update(id):
         except:
             flash('Ошибка! Попробуй еще раз...')
             return render_template('user/update.html', form=form, name_to_update=name_to_update)
+    form.about_author.data = name_to_update.about_author
     return render_template('user/update.html', form=form, name_to_update=name_to_update, id=id)
 
 

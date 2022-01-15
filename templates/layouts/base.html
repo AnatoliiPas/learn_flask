@@ -40,7 +40,6 @@
                 </nav>
                 <div style="display: flex;align-items: center;justify-content: center;padding-right: 1em;">
                     <form method="post" action="{{ url_for('differents.search') }}">
-                        {{ form.csrf_token }}
                         <input style="outline:none;padding-left: 0.3em;" type="text" name="searched"
                             placeholder="Поиск">
                         <input class="btn-nav" type="submit" value="ПОИСК">

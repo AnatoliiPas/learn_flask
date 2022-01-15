@@ -10,7 +10,7 @@ class Users(db.Model, UserMixin):
     name = db.Column(db.String(200), nullable=False, unique=True)
     email = db.Column(db.String(120), nullable=False, unique=True)
     password = db.Column(db.String(128))
-    color = db.Column(db.String(120))
+    about_author = db.Column(db.Text(), nullable=True)
     posts = db.relationship('Posts', backref='poster')
     created_add = db.Column(db.DateTime, default=datetime.now())
 

@@ -42,7 +42,11 @@
                 </div>
                 <div style="width: 100%; padding: 0 1em;">
                     <p style="margin: 0.9em; white-space: pre-wrap;">{{ post.content | safe }}</p>
+                    {% if post.poster.about_author %}
+                    <p style="margin: 0.9em;">{{ post.poster }} - {{ post.poster.about_author }}</p>
+                    {% else %}
                     <p style="margin: 0.9em;">{{ post.poster }}</p>
+                    {% endif %}
                     <p style="margin: 0.9em;">{{ post.date_posted }}</p>
                 </div>
             </div>

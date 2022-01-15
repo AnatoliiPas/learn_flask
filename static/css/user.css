@@ -1,6 +1,6 @@
 .fm-lb {
     font-size: 1.2em;
-    line-height: 2em;
+    line-height: 1.6em;
 }
 .fm {
     border: 1px solid #bfc6ee;
@@ -18,6 +18,7 @@
 .fm-tx {
     width: 70%;
     padding-top: 0.5em;
+    font-family: 'MerIt';
 }
 .fm-inp:hover, .fm-inp:focus {
     box-shadow: 0.2em 0.2em 0.4em #747a9c;
