@@ -11,6 +11,7 @@ class Users(db.Model, UserMixin):
     email = db.Column(db.String(120), nullable=False, unique=True)
     password = db.Column(db.String(128))
     about_author = db.Column(db.Text(), nullable=True)
+    profile_pic = db.Column(db.String(), nullable=True)
     posts = db.relationship('Posts', backref='poster')
     created_add = db.Column(db.DateTime, default=datetime.now())
 

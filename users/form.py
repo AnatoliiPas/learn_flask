@@ -1,4 +1,5 @@
 from flask_wtf import FlaskForm
+from flask_wtf.file import FileField
 from wtforms import StringField, SubmitField, PasswordField,  EmailField, TextAreaField
 from wtforms.validators import DataRequired, EqualTo, Length
 
@@ -12,6 +13,7 @@ class UserForm(FlaskForm):
                              DataRequired(), EqualTo('password2', message='пароли должны совпадать'), Length(min=8)])
     password2 = PasswordField('Потдвердить пароль',
                               validators=[DataRequired()])
+    profile_pic = FileField('Иконка пользователя')
     submit = SubmitField('Отправить')
 
 

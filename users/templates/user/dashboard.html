@@ -15,8 +15,8 @@
         <br><br>
     </center>
     <div style="width: 10em; height: 10em;">
-        <img style="height: 100%; width: 100%;" src="{{ url_for('static', filename='img/default_profile_pic.png') }}"
-            alt="user image">
+        <img style="height: 100%; width: 100%; border-radius: 5em;"
+            src="{{ url_for('static', filename='img/default_profile_pic.png') }}" alt="user image">
     </div>
     <div style="border: 1px solid #dfdfdf; box-shadow: 3px 8px 5px #dfdfdf;">
         <div style="display: flex;background: white;height: 4em;">
@@ -52,6 +52,14 @@
             </div>
         </div>
         <div style="display: flex;background: white;height: 4em;">
+            <div style="width: 20%;line-height: 4em;padding-left: 1em;">
+                <p><strong>Иконка пользователя: </strong></p>
+            </div>
+            <div style="width: 80%; line-height: 4em;padding-left: 1em;">
+                <p>{{ current_user.profile_pic }}</p>
+            </div>
+        </div>
+        <div style="display: flex;background: #dfdfdf;height: 4em;">
             <div style="width: 20%; line-height: 4em;padding-left: 1em;">
                 <p><strong>Профиль создан: </strong></p>
             </div>
