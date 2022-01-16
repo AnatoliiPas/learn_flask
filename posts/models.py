@@ -1,5 +1,5 @@
 from datetime import datetime
-from conf import db
+from extensions import db
 
 
 class Posts(db.Model):

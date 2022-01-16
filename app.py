@@ -1,7 +1,9 @@
-from flask import Flask, render_template
+from datetime import timedelta
+
+from flask import Flask, render_template, session
 from flask_migrate import Migrate
 
-from conf import db, login_manager, ckeditor
+from extensions import db, login_manager, ckeditor
 
 from config import Config
 from differents.form import SearchForm
@@ -31,6 +33,12 @@ app.register_blueprint(admin, url_prefix='/admin-site')
 def base():
     form = SearchForm()
     return dict(form=form)
+
+
+@app.before_request
+def make_session_permanent():
+    session.permanent = True
+    app.permanent_session_lifetime = timedelta(hours=1)
 
 
 @app.route('/')

@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, flash, request, redirect
 from flask.helpers import url_for
 from flask_login import login_required, current_user
 
-from conf import db
+from extensions import db
 from .models import Posts
 from .form import PostForm
 

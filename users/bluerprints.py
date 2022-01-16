@@ -1,10 +1,11 @@
-from flask import Blueprint, render_template, flash, request
-from flask_login import login_user, login_required, logout_user
+from flask import Blueprint, render_template, flash, request, current_app
+from flask_login import login_user, login_required, logout_user, current_user
 from flask.helpers import url_for
-from werkzeug.utils import redirect
+from werkzeug.utils import redirect, secure_filename
+import os
 import bcrypt
 
-from conf import db, login_manager
+from extensions import db, login_manager
 from .models import Users
 from .form import LogindForm, UserForm, NameForm, PasswordForm
 
@@ -38,9 +39,22 @@ def register():
         if Users.query.filter_by(name=form.name.data).first() is None:
             if Users.query.filter_by(username=form.username.data).first() is None:
                 if Users.query.filter_by(email=form.email.data).first() is None:
+
+                    pic_name = secure_filename(
+                        request.files['profile_pic'].filename)
+                    img_dir = os.path.join(
+                        current_app.config['UPLOAD_FOLDER'], form.username.data)
+                    if not os.path.isdir(img_dir):
+                        os.mkdir(img_dir)
+
+                    request.files['profile_pic'].save(
+                        os.path.join(img_dir, pic_name))
+
+                    picture = form.username.data + '/' + pic_name
+
                     password = form.password.data.encode('utf-8')
                     hash = bcrypt.hashpw(password, bcrypt.gensalt())
-                    user = Users(name=form.name.data, username=form.username.data,
+                    user = Users(name=form.name.data, username=form.username.data, profile_pic=picture,
                                  about_author=form.about_author.data, email=form.email.data, password=hash.decode('utf8'))
                     db.session.add(user)
                     db.session.commit()
@@ -84,7 +98,8 @@ def login():
 @login_required
 def dashboard():
     form = UserForm()
-    return render_template('user/dashboard.html', form=form)
+    user_pic = 'img/' + current_user.profile_pic
+    return render_template('user/dashboard.html', form=form, user_pic=user_pic)
 
 
 @user.route('/logout', methods=['GET', 'POST'])
@@ -122,6 +137,16 @@ def update(id):
         name_to_update.username = request.form['username']
         name_to_update.email = request.form['email']
         name_to_update.about_author = request.form['about_author']
+        name_to_update.profile_pic = request.files['profile_pic']
+        pic_name = secure_filename(name_to_update.profile_pic.filename)
+
+        img_dir = os.path.join(
+            current_app.config['UPLOAD_FOLDER'], name_to_update.username)
+        if not os.path.isdir(img_dir):
+            os.mkdir(img_dir)
+        name_to_update.profile_pic.save(os.path.join(img_dir, pic_name))
+
+        name_to_update.profile_pic = name_to_update.username + '/' + pic_name
         try:
             db.session.commit()
             flash('Данные обновленны')
@@ -133,7 +158,7 @@ def update(id):
     return render_template('user/update.html', form=form, name_to_update=name_to_update, id=id)
 
 
-@user.route('/delete/<int:id>')
+@ user.route('/delete/<int:id>')
 def delete(id):
     user_to_delete = Users.query.get_or_404(id)
     try:

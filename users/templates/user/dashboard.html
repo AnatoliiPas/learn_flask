@@ -14,10 +14,16 @@
         <h2>Личный кабинет!</h2>
         <br><br>
     </center>
-    <div style="width: 10em; height: 10em;">
-        <img style="height: 100%; width: 100%; border-radius: 5em;"
+    <div style="width: 10em; height: 10em; margin: 1em 0;">
+        {% if user_pic %}
+        <img style="height: 100%; width: 100%; border-radius: 50%;object-fit: cover;"
+            src="{{ url_for('static', filename=user_pic) }}" alt="user image">
+        {% else %}
+        <img style="height: 100%; width: 100%; border-radius: 50%;object-fit: cover;"
             src="{{ url_for('static', filename='img/default_profile_pic.png') }}" alt="user image">
+        {% endif %}
     </div>
+
     <div style="border: 1px solid #dfdfdf; box-shadow: 3px 8px 5px #dfdfdf;">
         <div style="display: flex;background: white;height: 4em;">
             <div style="width: 20%; line-height: 4em;padding-left: 1em;">
@@ -81,7 +87,5 @@
                 профиль</button>
         </div>
     </div>
-
-
 </div>
 {% endblock %}

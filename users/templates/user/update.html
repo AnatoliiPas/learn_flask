@@ -16,7 +16,7 @@
 </center>
 <br><br>
 
-<form action="{{ url_for('user.update', id=name_to_update.id) }}" method="post">
+<form action="{{ url_for('user.update', id=name_to_update.id) }}" method="post" enctype="multipart/form-data">
     {{ form.csrf_token }}
     <div class="fl">
         <div style="width: 30%;">{{ form.name.label(class="fm-lb") }}</div>
@@ -39,11 +39,12 @@
         <div style="width: 70%;">
             <div id="file-upload">
                 <label class="btn-a">
-                    {{ form.profile_pic( value=name_to_update.about_author)}}
+                    {{ form.profile_pic( onchange="getFileName ();")}}
                     <span>загрузить</span>
                 </label>
             </div>
         </div>
+        <div id="file-name"></div>
     </div>
     <div class="fl">
         <div style="margin: 1em;">{{ form.submit(class="btn btn-pr") }}</div>
@@ -85,4 +86,16 @@
         text-align: center;
     }
 </style>
+
+<script>
+    function getFileName() {
+
+        let file = document.getElementById('profile_pic').value;
+
+        file = file.split('\\').pop();
+
+        document.getElementById('file-name').innerHTML = 'Имя файла: ' + file;
+
+    }
+</script>
 {% endblock %}

@@ -17,7 +17,7 @@
     <img src="{{ url_for('static', filename='img/picture.jpg') }}" style="width: 100%;height: 100%; opacity: 0.6;">
 </div>
 {% else %}
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     {{ form.csrf_token }}
     <div class="fl">
         <div style="width: 30%;">{{ form.name.label(class="fm-lb") }}</div>
@@ -44,6 +44,18 @@
         <div style="width: 70%;">{{ form.password2(class="fm fm-inp") }}</div>
     </div>
     <div class="fl">
+        <div style="width: 30%;">{{ form.profile_pic.label(class="fm-lb") }}</div>
+        <div style="width: 70%;">
+            <div id="file-upload">
+                <label class="btn-a">
+                    {{ form.profile_pic( onchange="getFileName ();")}}
+                    <span>загрузить</span>
+                </label>
+            </div>
+        </div>
+        <div id="file-name"></div>
+    </div>
+    <div class="fl">
         {{ form.submit(class="btn btn-pr") }}
     </div>
 </form>
@@ -57,4 +69,37 @@
     {% endfor %}
 </div>
 {% endif %}
+{% endblock %}
+
+
+{% block code %}
+<style>
+    #file-upload input[type="file"] {
+        display: none;
+    }
+
+    #file-upload {
+        width: 5em;
+    }
+
+    #file-upload label {
+        display: block;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        text-align: center;
+    }
+</style>
+
+<script>
+    function getFileName() {
+
+        let file = document.getElementById('profile_pic').value;
+
+        file = file.split('\\').pop();
+
+        document.getElementById('file-name').innerHTML = 'Имя файла: ' + file;
+
+    }
+</script>
 {% endblock %}
