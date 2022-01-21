@@ -1,9 +1,9 @@
-from flask import Blueprint, render_template, flash, request, current_app
-from flask_login import login_user, login_required, logout_user, current_user
-from flask.helpers import url_for
-from werkzeug.utils import redirect, secure_filename
 import os
 import bcrypt
+
+from flask import Blueprint, render_template, flash, url_for,  redirect, request, current_app
+from flask_login import login_user, login_required, logout_user, current_user
+from werkzeug.utils import secure_filename
 
 from extensions import db, login_manager
 from .models import Users
@@ -159,13 +159,18 @@ def update(id):
 
 
 @ user.route('/delete/<int:id>')
+@login_required
 def delete(id):
-    user_to_delete = Users.query.get_or_404(id)
-    try:
-        db.session.delete(user_to_delete)
-        db.session.commit()
-        flash('Данные удалены')
-        return redirect(url_for('user.register'))
-    except:
-        flash('Ошибка! Попробуй еще раз...')
-        return redirect(url_for('user.register'))
+    if id == current_user.id:
+        user_to_delete = Users.query.get_or_404(id)
+        try:
+            db.session.delete(user_to_delete)
+            db.session.commit()
+            flash('Данные удалены')
+            return redirect(url_for('user.register'))
+        except:
+            flash('Ошибка! Попробуй еще раз...')
+            return redirect(url_for('user.register'))
+    else:
+        flash("Вы не можете удалить эти данные.")
+        return redirect(url_for('user.dashboard'))
